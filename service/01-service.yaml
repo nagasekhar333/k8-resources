@@ -13,9 +13,9 @@ spec:
     - containerPort: 80
 ---
 apiVersion: v1
-kind: service
+kind: Service
 metadata: 
- name: nginx-service
+ name: nginx-Service
 spec:
  selector:
   name: nginx
