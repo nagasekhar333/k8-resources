@@ -108,7 +108,7 @@ spec:
    imagePullPolicy: Always
    image: sekharmanduri/web:k8
    volumeMounts:
-   - name: nginx-conf
+   - name: nginx-config
      mountPath: /etc/nginx/nginx.conf
      subpath: nginx.conf
    resources:
