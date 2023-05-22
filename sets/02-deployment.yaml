@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+   type: RollingUpdate
+   rollingUpdate:
+    maxUnavailable: 1 #we asked for 10 we are okay if 9 are running at the time of upgrade
+    maxSurge: 1 #we asked for 10, we are okay at the time at the time of upgrade 11 are running
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
