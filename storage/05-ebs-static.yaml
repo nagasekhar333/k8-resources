@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-ebs-volume
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  awsElasticBlockStore:
+    volumeID: vol-ob580a797aa2271c1
+    fsType: ext4
