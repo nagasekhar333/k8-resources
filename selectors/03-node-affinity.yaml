@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: with-node-affinity
+spec:
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+      preferrence:
+       matchExpressions:
+        - key: tier
+          operator: ln
+          values:
+          - web
+      - weight: 50
+      preferrence:
+       matchExpressions:
+         - key: tier
+           operator: ln
+           values:
+           - app
+  containers:
+  - name: with-node-affinity
+    image: registry.k8s.io/pause:2.0
