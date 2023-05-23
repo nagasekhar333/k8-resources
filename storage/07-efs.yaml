@@ -10,3 +10,16 @@ parameters:
  gidRangeStart: "1000" #optional
  gidRangeEnd: "2000" # optional
  basePath: "/dynamic_provisioning" # optional
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+ name: efs-claim
+spec:
+ accessMode:
+  - ReadWriteMany
+  storageClassName: efs-sc
+  resources:
+   requests:
+    storage: 5GI
+    
