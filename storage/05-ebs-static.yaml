@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -5,40 +6,39 @@ metadata:
 spec:
   storageClassName: manual
   capacity:
-    storage: 50Gi
+   storageClassName:
   accessModes:
     - ReadWriteOnce
   awsElasticBlockStore:
-    volumeID: vol-ob580a797aa2271c1
-    fsType: ext4
+   volumeID: vol-ob580a797aa2271c1 #replace volume
+   fsType: ext4
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ebs-pvc
+  name: my-ebs-pvc
 spec:
   storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
-    requests:
-      storage: 10Gi
-  storageClassName: ""
-  volumeName: ebs-pv
+   requests:
+   storage: 10GI
+  volumeName: my-ebs-volume
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: app-pod
+  name: my-pod
 spec:
   containers:
     - name: nginx
       image: nginx
       volumeMounts:
-        - name: ebs-volume
+        - name: my-ebs-volume
           mountPath: /usr/share/nginx/html
   volumes:
-    - name: ebs-volume
+    - name: my-ebs-volume
       persistentVolumeClaim:
-        claimName: ebs-pvc
+        claimName: my-ebs-pvc
 
