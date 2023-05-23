@@ -21,5 +21,5 @@ spec:
            values:
            - app
   containers:
-  - name: with-node-affinity
-    image: registry.k8s.io/pause:2.0
+  - name: nginx
+    image: nginx
