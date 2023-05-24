@@ -1,4 +1,5 @@
-kind: namespaceapiVersion: v1
+kind: namespace
+apiVersion: v1
 metadata:
  name: roboshop
  labels:
@@ -21,10 +22,9 @@ metadata:
   namespace: roboshop
 subjects:
 - kind: User
-  name: roboshop-admin # "name" is case sensitive
+  name: roboshop-admin 
   apiGroup: rbac.authorization.k8s.io
 roleRef:
-  # "roleRef" specifies the binding to a Role / ClusterRole
-  kind: Role #this must be Role or ClusterRole
-  name: roboshop-admin-role # this must match the name of the Role or ClusterRole you wish to bind to
+  kind: Role 
+  name: roboshop-admin-role 
   apiGroup: rbac.authorization.k8s.io
